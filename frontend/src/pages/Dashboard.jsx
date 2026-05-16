@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import api from '../api/axios'
 import StatCard from '../components/StatCard'
@@ -76,25 +77,25 @@ const Dashboard = () => {
       <div className="mt-8 card">
         <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <a href="/timesheets" className="p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 transition-colors">
+          <Link to="/timesheets" className="p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 transition-colors">
             <div className="text-3xl mb-2">⏱️</div>
             <h3 className="font-semibold">Log Time</h3>
             <p className="text-sm text-gray-600">Add new timesheet entry</p>
-          </a>
+          </Link>
           
           {['admin', 'manager'].includes(user?.role) && (
-            <a href="/analytics" className="p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 transition-colors">
+            <Link to="/analytics" className="p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 transition-colors">
               <div className="text-3xl mb-2">📈</div>
               <h3 className="font-semibold">View Analytics</h3>
               <p className="text-sm text-gray-600">Team productivity insights</p>
-            </a>
+            </Link>
           )}
           
-          <a href="/profile" className="p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 transition-colors">
+          <Link to="/profile" className="p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 transition-colors">
             <div className="text-3xl mb-2">👤</div>
             <h3 className="font-semibold">Profile</h3>
             <p className="text-sm text-gray-600">Manage your account</p>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
