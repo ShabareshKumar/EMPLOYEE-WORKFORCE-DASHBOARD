@@ -9,6 +9,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [slowWarning, setSlowWarning] = useState(false)
   
   const { login } = useAuth()
   const navigate = useNavigate()
@@ -16,16 +17,24 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+    setSlowWarning(false)
     setLoading(true)
 
+    // Show "waking up" message after 5 seconds (Render cold start)
+    const slowTimer = setTimeout(() => {
+      setSlowWarning(true)
+    }, 5000)
+
     const result = await login(email, password)
-    
+    clearTimeout(slowTimer)
+    setSlowWarning(false)
+
     if (result.success) {
       navigate('/dashboard')
     } else {
       setError(result.message)
     }
-    
+
     setLoading(false)
   }
 
@@ -54,6 +63,15 @@ const Login = () => {
         </div>
 
         {error && <Alert type="error" message={error} onClose={() => setError('')} />}
+
+        {slowWarning && (
+          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg flex items-center gap-2">
+            <span className="text-yellow-600 text-lg">⏳</span>
+            <p className="text-sm text-yellow-800">
+              Server is waking up — this may take up to 60 seconds on first login. Please wait...
+            </p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
