@@ -1,0 +1,53 @@
+"""
+Application constants
+Centralized location for all magic numbers and configuration values
+"""
+
+# Pagination
+DEFAULT_PAGE_SIZE = 20
+MAX_PAGE_SIZE = 100
+
+# Hours validation
+MIN_HOURS = 0
+MAX_HOURS_PER_DAY = 24
+
+# Password requirements
+MIN_PASSWORD_LENGTH = 12
+PASSWORD_SPECIAL_CHARS = r'!@#$%^&*()_+-=[]{}|;:,.<>?'
+
+# File upload
+MAX_FILE_SIZE_MB = 10
+ALLOWED_EXCEL_EXTENSIONS = ['.xlsx', '.xls', '.csv']
+
+# Rate limiting
+LOGIN_RATE_LIMIT_REQUESTS = 5
+LOGIN_RATE_LIMIT_WINDOW_SECONDS = 60
+
+# JWT
+JWT_EXPIRATION_HOURS = 2
+
+# Text field lengths
+MAX_NAME_LENGTH = 100
+MAX_EMAIL_LENGTH = 120
+MAX_PROJECT_NAME_LENGTH = 200
+MAX_TASK_NAME_LENGTH = 200
+MAX_DESCRIPTION_LENGTH = 500
+
+# API versioning
+API_VERSION = 'v1'
+API_PREFIX = f'/api/{API_VERSION}'
+
+# Audit actions
+AUDIT_ACTION_CREATE = 'CREATE'
+AUDIT_ACTION_UPDATE = 'UPDATE'
+AUDIT_ACTION_DELETE = 'DELETE'
+AUDIT_ACTION_LOGIN = 'LOGIN'
+AUDIT_ACTION_LOGOUT = 'LOGOUT'
+AUDIT_ACTION_REGISTER = 'REGISTER'
+
+# Entity types
+ENTITY_USER = 'User'
+ENTITY_TIMESHEET = 'Timesheet'
+ENTITY_PROJECT = 'Project'
+ENTITY_CATEGORY = 'ProjectCategory'
+ENTITY_TASK = 'ProjectTask'
